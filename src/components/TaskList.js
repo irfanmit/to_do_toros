@@ -1,9 +1,9 @@
-import React, { useEffect, useState} from "react";
-import axios from "axios";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { UserContext } from "../context/UserContext";
 
 function TaskList() {
+  const { user } = useContext(UserContext); // Access user context
   const [tasks, setTasks] = useState([]);
   const [statusFilter, setStatusFilter] = useState("");
   const [priorityFilter, setPriorityFilter] = useState("");
@@ -15,7 +15,7 @@ function TaskList() {
   
   const fetchTasks = async () => {
     try {
-      const url = "http://localhost:5000/api/tasks"; // Correct the URL
+      const url = "http://localhost:5000/api/tasks"; 
   
       const response = await fetch(url, {
         method: "GET",
@@ -29,20 +29,21 @@ function TaskList() {
       }
   
       const data = await response.json();
-      setTasks(data.tasks); // Assuming the response is structured as { tasks: [...] }
+      setTasks(data.tasks); 
     } catch (error) {
       console.error("Error fetching tasks", error);
     }
   };
   
-
   const handleAddTask = () => {
-    navigate("/task_form"); // Navigate to TaskForm page
+    navigate("/task_form"); 
   };
 
   return (
     <div className="container">
       <h2>Your Tasks</h2>
+      {user && <h4>Showing results for: {user.username}</h4>} {/* Display username */}
+
       <div>
         <label>Status:</label>
         <select onChange={(e) => setStatusFilter(e.target.value)}>
@@ -72,7 +73,7 @@ function TaskList() {
           </li>
         ))}
       </ul>
-      <button onClick={handleAddTask}>Add New Task</button> {/* Button to open TaskForm */}
+      <button onClick={handleAddTask}>Add New Task</button> 
     </div>
   );
 }

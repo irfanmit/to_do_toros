@@ -6,7 +6,7 @@ const Home = lazy(() => import('../components/Home'));
 const TaskList = lazy(() => import('../components/TaskList'));
 const TaskForm = lazy(() => import('../components/TaskForm'));
 const Login = lazy(() => import('../components/Login'));
-const Register = lazy(() => import('../components/Register')); // Import Register component
+const Register = lazy(() => import('../components/Register')); 
 
 function AppRoutes() {
   return (
@@ -15,7 +15,7 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} /> {/* New route for registration */}
+          <Route path="/register" element={<Register />} /> 
           <Route path="/tasks" element={<TaskList />} />
           <Route path="/task_form" element={<TaskForm />} />
         </Routes>

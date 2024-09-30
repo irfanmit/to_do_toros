@@ -16,7 +16,7 @@ function Login() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }), // Sending login data
+        body: JSON.stringify({ email, password }), 
       });
 
       if (!response.ok) {
@@ -25,16 +25,12 @@ function Login() {
 
       const data = await response.json();
 
-      // Log the returned data
       console.log("Login response data:", data);
 
-      // Store the JWT token in localStorage
       localStorage.setItem("token", data.token);
 
-      // Set user data in context
       setUser(data.user);
 
-      // Navigate to tasks page on successful login
       navigate("/tasks");
     } catch (error) {
       console.error("Login error", error);

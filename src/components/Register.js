@@ -12,7 +12,6 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if passwords match
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
@@ -37,7 +36,7 @@ function Register() {
 
       const data = await response.json();
       console.log("Registration successful:", data);
-      navigate("/login"); // Navigate to login page after successful registration
+      navigate("/login"); 
     } catch (error) {
       console.error("Registration error", error);
       setError("Registration failed. Please try again.");

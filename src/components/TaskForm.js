@@ -19,7 +19,7 @@ function TaskForm() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // Include token for authentication if needed
+          Authorization: `Bearer ${localStorage.getItem("token")}`, 
         },
         body: JSON.stringify({
           title,
@@ -32,7 +32,7 @@ function TaskForm() {
       });
 
       if (response.ok) {
-        navigate("/tasks"); // Redirect to task list page upon success
+        navigate("/tasks"); 
       } else {
         console.error("Failed to create task");
       }
